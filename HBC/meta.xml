@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+	<app version="1.0">
+		<name>FSToolBox AHBPROT MOD</name>
+		<coder>nicksasa, Lupo96</coder>
+		<version>1.0</version>
+		<release_date>01-13-2012</release_date>
+		<short_description>A WII FS Swiss Army Knife</short_description>
+		<long_description>This is little yet really usefull utility originally coded by nicksasa and then modified by Lupo96 to use AHBPROT with IOS58.
+		Based on FSToolBox v4beta, may be unstable.
+		You need HBC 1.0.8 or higher to run this!!!
+Find me (Lupo96) on wiitaly.altervista.org</long_description>
+  <no_ios_reload /> 
+  </app>
