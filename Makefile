@@ -33,7 +33,7 @@ LDFLAGS	=	-g $(MACHDEP) -Wl,-Map,$(notdir $@).map
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:=   -ldi -lwiiuse -lz -lbte -lasnd -lfat -logc -lm -lmad
+LIBS	:=   -lwiiuse -lbte -lfat -logc -lm
 
 
 #---------------------------------------------------------------------------------
@@ -48,6 +48,9 @@ LIBDIRS	:= $(PORTLIBS)
 #---------------------------------------------------------------------------------
 ifneq ($(BUILD),$(notdir $(CURDIR)))
 #---------------------------------------------------------------------------------
+
+export APP_NAME := FSToolBox-Mod
+export VERSION	:= $(shell git describe --tags --abbrev=0)
 
 export OUTPUT	:=	$(CURDIR)/$(TARGET)
 
@@ -93,17 +96,26 @@ export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib) \
 					-L$(LIBOGC_LIB)
 
 export OUTPUT	:=	$(CURDIR)/$(TARGET)
-.PHONY: $(BUILD) clean
+.PHONY: elf clean
 
 #---------------------------------------------------------------------------------
-$(BUILD):
-	@[ -d $@ ] || mkdir -p $@
+elf:
+	@[ -d $(BUILD) ] || mkdir -p $(BUILD)
 	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 #---------------------------------------------------------------------------------
 clean:
 	@echo clean ...
 	@rm -fr $(BUILD) $(OUTPUT).elf $(OUTPUT).dol
+	@rm -rf apps/$(APP_NAME)/boot.dol
+	@rm -rf $(APP_NAME)-*.zip
+
+#---------------------------------------------------------------------------------
+release: clean
+	@$(MAKE) --no-print-directory  elf
+
+	@cp $(OUTPUT).dol "apps/$(APP_NAME)/boot.dol"
+	@-7za a $(APP_NAME)-$(VERSION).zip apps/
 
 
 #---------------------------------------------------------------------------------

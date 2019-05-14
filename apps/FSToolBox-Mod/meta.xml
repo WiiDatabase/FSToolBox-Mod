@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<app version="1.0">
+    <name>FSToolBox Mod</name>
+    <coder>WiiDatabase.de, nicksasa, Lupo96</coder>
+    <version>0.5 Mod</version>
+    <release_date>20190514195700</release_date>
+    <short_description>Wii NAND Browser and Dumper</short_description>
+    <long_description>FSToolBox is a NAND Browser and Dumper for the Wii and the Wii U's Wii Mode. It lists all directorys and files in the NAND and can dump individual files or the whole directory, including subdirectorys.
+    
+    This is a modification by the WiiDatabase.de Team which cleans up the code a bit, speeds up the start process and navigation a lot and removes unnecessary patches.
+    
+    Credits:
+    * nickasa for the original FSToolBox
+    * Lupo96 for the HW_AHBPROT modification
+    
+    This is alpha software.</long_description>
+  <no_ios_reload /> 
+</app>
